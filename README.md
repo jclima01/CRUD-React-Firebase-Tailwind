@@ -1,1 +1,1 @@
-# CRUD-React-Firebase-Tailwind
+# CRUD-React-Firebase-Tailwind-Redux
