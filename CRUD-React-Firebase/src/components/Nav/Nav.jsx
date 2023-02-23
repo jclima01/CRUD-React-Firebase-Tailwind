@@ -6,8 +6,7 @@ const Nav = () => {
       <Link to='/addproducts'>
       <button className="bg-transparent hover:bg-purple-700 text-purple-700 font-semibold hover:text-white py-2 px-4 border border-purple-700 hover:border-transparent rounded uppercase transition duration-400 cursor-pointer">
   Add Product
-</button>
-
+      </button>
       </Link>
     </div>
   );
