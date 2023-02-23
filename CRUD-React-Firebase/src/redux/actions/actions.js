@@ -1,4 +1,5 @@
 import { addDoc, collection, deleteDoc, doc, getDocs } from "firebase/firestore";
+
 import {db} from '../../../firebase/firebase.js'
 export const ADD_PRODUCT = "ADD_PRODUCT";
 export const DELETE_PRODUCT = "DELETE_PRODUCT";

@@ -34,7 +34,7 @@ const AddProductForm = ({ onAdd }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate('/')
+    navigate('/home')
     dispatch(addProduct(newProduct))
     setNewProduct({
       name: "",
@@ -44,7 +44,7 @@ const AddProductForm = ({ onAdd }) => {
   };
   return (
     <div>
-      <Link to="/">
+      <Link to="/home">
         <button className="bg-transparent hover:bg-purple-700 text-purple-700 font-semibold hover:text-white py-2 px-4 border border-purple-700 hover:border-transparent rounded uppercase transition duration-400 cursor-pointer">
           Regresar al Home
         </button>
