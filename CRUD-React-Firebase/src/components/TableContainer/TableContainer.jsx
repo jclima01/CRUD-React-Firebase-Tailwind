@@ -1,15 +1,17 @@
-import React, { useEffect } from "react";
+import React, { memo, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../../redux/actions/actions";
 import RowProduct from "../RowProduct/RowProduct";
 
-const TableContainer = () => {
+const TableContainer = memo(() => {
     const dispatch = useDispatch();
     const products = useSelector(state => state.products)
-    console.log(products)
+
     useEffect(() => {
         dispatch(getProducts())
-    },[])
+    },[products])
+    
+
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
       <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -29,10 +31,10 @@ const TableContainer = () => {
             </th>
           </tr>
         </thead>
-        <tbody>
+        <tbody >
          {products?.map(product => {
           return <RowProduct 
-          key={product.id} 
+          key={product.prodID} 
           id={product.id}
           name={product.name}
           category={product.category}
@@ -44,6 +46,6 @@ const TableContainer = () => {
       </table>
     </div>
   );
-};
+});
 
 export default TableContainer;

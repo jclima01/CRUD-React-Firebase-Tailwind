@@ -15,9 +15,10 @@ const rootReducer = (state = initialState, { type, payload }) => {
         products: [...state.products, payload],
       };
     case DELETE_PRODUCT:
+      const filteredProducts = state.products.filter((product) => product.id !== payload)
       return {
         ...state,
-        products: state.products.filter((product) => product.id !== payload),
+        products: filteredProducts,
       };
     case GET_PRODUCTS:
       return {

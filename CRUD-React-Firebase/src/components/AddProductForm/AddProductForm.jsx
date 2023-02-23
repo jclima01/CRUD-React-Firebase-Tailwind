@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState,memo } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { validation } from "../../Validation/validation";
 import { useDispatch } from "react-redux";
 import { addProduct, getProducts } from "../../redux/actions/actions";
 
 const AddProductForm = ({ onAdd }) => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const [newProduct, setNewProduct] = useState({
     name: "",
     price: "",
@@ -33,7 +34,13 @@ const AddProductForm = ({ onAdd }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    navigate('/')
     dispatch(addProduct(newProduct))
+    setNewProduct({
+      name: "",
+      price: "",
+      category: "",
+    });
   };
   return (
     <div>
@@ -44,7 +51,6 @@ const AddProductForm = ({ onAdd }) => {
       </Link>
       <div className="flex flex-col content-center h-screen w-full justify-center">
         <form
-          onSubmit={handleSubmit}
           className="flex flex-col  justify-between self-center h-1/3 text-violet-100 p-2 rounded-xl bg-purple-700 bg-opacity-40"
         >
           <div className="self-center">
@@ -106,6 +112,7 @@ const AddProductForm = ({ onAdd }) => {
           <button
             type="submit"
             className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            onClick={handleSubmit}
           >
             Add Product
           </button>
@@ -113,6 +120,6 @@ const AddProductForm = ({ onAdd }) => {
       </div>
     </div>
   );
-};
+}
 
 export default AddProductForm;
