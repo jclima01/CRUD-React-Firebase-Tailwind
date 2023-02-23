@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { validation } from "../../Validation/validation";
 import { useDispatch } from "react-redux";
-import { getProducts } from "../../redux/actions/actions";
+import { addProduct, getProducts } from "../../redux/actions/actions";
 
 const AddProductForm = ({ onAdd }) => {
+  const dispatch = useDispatch()
   const [newProduct, setNewProduct] = useState({
     name: "",
     price: "",
@@ -32,7 +33,7 @@ const AddProductForm = ({ onAdd }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(newProduct);
+    dispatch(addProduct(newProduct))
   };
   return (
     <div>
